@@ -64,7 +64,7 @@ public class Baraja {
 
     public void mostrarBaraja() {
         for (Cartas card : this.cards) {
-            System.out.print(card + " ");
+            System.out.print(card + ", ");
         }
         System.out.println();
     }
