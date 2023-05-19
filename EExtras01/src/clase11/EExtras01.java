@@ -58,7 +58,7 @@ public class EExtras01 {
             System.out.println("Hola " + persona.getNombre() + ", elige un perro para adoptar: ");
             for (Perro perro : perros) {
                 if (!perro.isAdoptado()) {
-                    System.out.println(perro.getNombre() + " - Raza: " + perro.getRaza() + " - Edad: " + perro.getEdad() + " - Tamaño: " + perro.getTamaño());
+                    System.out.println(perro.getNombre() + " - Raza: " + perro.getRaza() + " - Edad: " + perro.getEdad() + " - Tamaño: " + perro.getTalla());
                 }
             }
 
@@ -97,7 +97,7 @@ public class EExtras01 {
 
             Perro perro = persona.getPerro();
             if (perro != null) {
-                System.out.println("Perro: " + perro.getNombre() + " - Raza: " + perro.getRaza() + " - Edad: " + perro.getEdad() + " - Tamaño: " + perro.getTamaño());
+                System.out.println("Perro: " + perro.getNombre() + " - Raza: " + perro.getRaza() + " - Edad: " + perro.getEdad() + " - Tamaño: " + perro.getTalla());
             } else {
                 System.out.println("No ha adoptado un perro.");
             }

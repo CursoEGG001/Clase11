@@ -1,0 +1,13 @@
+@startuml
+class Entidad.Perro
+class Entidad.Persona
+class clase11.EExtras01
+class java.util.ArrayList
+class java.util.List
+class java.util.Scanner
+clase11.EExtras01 ..> Entidad.Perro
+clase11.EExtras01 ..> Entidad.Persona
+clase11.EExtras01 ..> java.util.ArrayList
+clase11.EExtras01 ..> java.util.List
+clase11.EExtras01 ..> java.util.Scanner
+@enduml

@@ -12,14 +12,14 @@ public class Perro {
     private String nombre;
     private String raza;
     private int edad;
-    private String tamaño;
+    private String talla;
     private boolean adoptado;
 
-    public Perro(String nombre, String raza, int edad, String tamaño) {
+    public Perro(String nombre, String raza, int edad, String talle) {
         this.nombre = nombre;
         this.raza = raza;
         this.edad = edad;
-        this.tamaño = tamaño;
+        this.talla = talle;
         this.adoptado = false;
     }
 
@@ -35,8 +35,8 @@ public class Perro {
         return edad;
     }
 
-    public String getTamaño() {
-        return tamaño;
+    public String getTalla() {
+        return talla;
     }
 
     public boolean isAdoptado() {
