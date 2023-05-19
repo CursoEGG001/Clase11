@@ -38,4 +38,9 @@ public class Perro {
         return size;
     }
 
+    @Override
+    public String toString() {
+        return "Perro{" + "name=" + name + ", race=" + race + ", age=" + age + ", size=" + size + '}';
+    }
+
 }
