@@ -28,15 +28,24 @@ public class EExtras01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner opc = new Scanner(System.in).useDelimiter("\n");
         List<Persona> personas = new ArrayList<>();
         List<Perro> perros = new ArrayList<>();
 
         // Crear dos Perros
         Perro perro1 = new Perro("Bobby", "Labrador", 3, "Mediano");
         Perro perro2 = new Perro("Rocky", "Bulldog", 2, "Grande");
+        Perro perro3 = new Perro("Fibi", "Chowchow", 3, "Pequeño");
+        Perro perro4 = new Perro("Tronador", "Pitbull", 3, "Mediano");
+        Perro perro5 = new Perro("Chilli", "Chihuhua", 3, "Pequeño");
+        Perro perro6 = new Perro("Angueto", "Collie", 3, "Mediano");
+
         perros.add(perro1);
         perros.add(perro2);
+        perros.add(perro3);
+        perros.add(perro4);
+        perros.add(perro5);
+        perros.add(perro6);
 
         // Crear dos Personas
         Persona persona1 = new Persona("Juan", "Perez", 30, 123456789);
@@ -53,7 +62,7 @@ public class EExtras01 {
                 }
             }
 
-            String nombrePerro = scanner.nextLine();
+            String nombrePerro = opc.next();
 
             Perro perroElegido = null;
             for (Perro perro : perros) {
