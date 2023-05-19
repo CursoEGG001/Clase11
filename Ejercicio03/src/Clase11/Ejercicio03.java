@@ -5,6 +5,7 @@
 package Clase11;
 
 import Cartas.Baraja;
+import java.util.Arrays;
 
 /**
  * Realizar una baraja de cartas españolas orientada a objetos. Una carta tiene un número entre 1 y 12 (el 8 y el 9 no los
@@ -32,13 +33,11 @@ public class Ejercicio03 {
         mazo.Barajar();
         System.out.println("Mezclar las cartas");
         mazo.shuffle();
-        System.out.println("Repartir las Cartas");
-        mazo.darCartas(4);
+        System.out.println("Repartir las Cartas:\n " + Arrays.toString(mazo.darCartas(4)));
         System.out.println("Muestra todo:");
         mazo.showCartasMonton();
         System.out.println("Lo que queda: " + mazo.cuantasCartas());
-        System.out.println("Pide otra:");
-        mazo.otraCarta();
+        System.out.println("Pide otra:" + mazo.otraCarta());
         System.out.println("Muestra la baraja hasta ahora:");
         mazo.mostrarBaraja();
     }

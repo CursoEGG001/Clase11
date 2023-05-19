@@ -12,16 +12,11 @@ import java.util.Collections;
  * @author pc
  */
 
-
-
-
-
 public class Baraja {
 
     private ArrayList<Cartas> cards;
 
     public Baraja() {
-
     }
 
     public void Barajar() {
