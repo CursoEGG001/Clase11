@@ -20,14 +20,13 @@ public class Voto {
         this.daVotos = daVotos;
         this.recibenVotos = recibenVotos;
     }
-    
 
     public Set<Alumno> getAlumnosVotados() {
-        return (this.recibenVotos); 
+        return (this.recibenVotos);
     }
 
-   public Alumno getAlumno() {
-        return this.daVotos; 
+    public Alumno getAlumno() {
+        return this.daVotos;
     }
 
 }

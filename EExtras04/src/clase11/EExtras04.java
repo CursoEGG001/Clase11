@@ -16,11 +16,10 @@ public class EExtras04 {
 
     public static void main(String[] args) {
         Simulador simulador = new Simulador();
-        List<Alumno> alumnos = simulador.generarListadoAlumnos(10);
+        List<Alumno> alumnos = simulador.generarListadoAlumnos(100);
         simulador.asignarNombresDNI(alumnos);
         simulador.mostrarListadoAlumnos(alumnos);
         simulador.votacion(alumnos);
-        simulador.recuentoVotos(alumnos);
         simulador.mostrarFacilitadores(alumnos);
     }
 }

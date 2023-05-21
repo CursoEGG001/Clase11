@@ -45,11 +45,16 @@ public class Alumno {
                 + '}';
     }
 
-    public void setNombreCompleto(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
-    public void setDNI(String dni) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
     }
+
+    public void setCantidadVotos(int cantidadVotos) {
+        this.cantidadVotos = cantidadVotos;
+    }
+
 }

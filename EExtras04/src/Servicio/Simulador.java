@@ -11,11 +11,16 @@ package Servicio;
 import Entidad.Alumno;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 public class Simulador {
+
+    private static final int NUM_VOTOS = 3;
+    private static final int NUM_FACILITADORES = 5;
+    private static final int NUM_FACILITADORES_SUPLENTES = 5;
 
     private List<String> nombres;
     private List<String> apellidos;
@@ -26,113 +31,126 @@ public class Simulador {
         apellidos = new ArrayList<>();
         dnis = new ArrayList<>();
 
-        // Inicializar nombres y apellidos
-        nombres.add("Juan");
-        nombres.add("Jimena");
-        nombres.add("Miguel");
-        nombres.add("Emma");
-        // Agregar más nombres según necesidad
-
-        apellidos.add("Sampano");
-        apellidos.add("Jonas");
-        apellidos.add("Vilca");
-        apellidos.add("Burgo");
-        // Agregar más apellidos según necesidad
     }
 
     public List<Alumno> generarListadoAlumnos(int cantidad) {
         List<Alumno> alumnos = new ArrayList<>();
         Random random = new Random();
 
+        // Inicializar las listas de nombres, apellidos
+        // (puedes agregar nombres y apellidos según tus necesidades)
+        String[] nom = {
+            "Juan", "María", "Pedro", "Ana", "Luis", "Laura", "Carlos", "Lucía",
+            "Sergio", "Marta", "Andrés", "Elena", "José", "Carmen", "Miguel", "Isabel",
+            "Pablo", "Silvia", "Javier", "Rosa"
+        };
+
+        String[] apll = {
+            "Gómez", "López", "Pérez", "Fernández", "Martínez", "García", "Rodríguez",
+            "Sánchez", "Romero", "Torres", "Vargas", "Navarro", "Ramos", "Jiménez",
+            "Moreno", "Herrera", "Castillo", "Ruiz", "Alonso", "Gutiérrez"
+        };
+
         for (int i = 0; i < cantidad; i++) {
-            String nombre = nombres.get(random.nextInt(nombres.size()));
-            String apellido = apellidos.get(random.nextInt(apellidos.size()));
-            String nombreCompleto = nombre + " " + apellido;
-            String dni = generarDNI();
-            alumnos.add(new Alumno(nombreCompleto, dni));
+            String nombre = nom[random.nextInt(nom.length)];
+            String apellido = apll[random.nextInt(apll.length)];
+            alumnos.add(new Alumno(nombre + " " + apellido, ""));
         }
 
         return alumnos;
     }
 
-    private String generarDNI() {
+    public List<String> generarCombinacionesDNI(int cantidad) {
+        List<String> combinaDNI = new ArrayList<>();
+        List<String> combinacionesDNI = new ArrayList<>();
         Random random = new Random();
-        String dni;
-        boolean dniRepetido;
 
-        do {
-            int numeroDNI = random.nextInt(99999999 - 10000000 + 1) + 10000000;
-            dni = String.valueOf(numeroDNI);
-            dniRepetido = dnis.contains(dni);
-        } while (dniRepetido);
+        for (int i = 0; i < cantidad; i++) {
+            String dni = "";
+            while (dni.length() < 8) {
+                dni += random.nextInt(10);
+            }
+            combinaDNI.add(dni);
+        }
+        HashSet<String> noDuplicados = new HashSet<>();
+        for (String combinaciones : combinaDNI) {
+            noDuplicados.add(combinaciones);
+        }
+        
+        for (String noDuplicado : noDuplicados) {
+            combinacionesDNI.add(noDuplicado);
+        }
 
-        dnis.add(dni);
-        return dni;
+        return combinacionesDNI;
     }
 
     public void asignarNombresDNI(List<Alumno> alumnos) {
-        List<String> nombresLista = new ArrayList<>(this.nombres);
-        List<String> dnies = new ArrayList<>(this.dnis);
         Random random = new Random();
-
+        List<String> docAsignables = generarCombinacionesDNI(alumnos.size());
         for (Alumno alumno : alumnos) {
-            String nombre = nombresLista.get(random.nextInt(nombresLista.size()));
-            nombresLista.remove(nombre);
-            alumno.setNombreCompleto(nombre + " " + apellidos.get(random.nextInt(apellidos.size())));
-
-            String dni = dnies.get(random.nextInt(dnies.size()));
-            dnies.remove(dni);
+            String dni = docAsignables.get(alumnos.indexOf(alumno));
             alumno.setDNI(dni);
         }
     }
 
     public void mostrarListadoAlumnos(List<Alumno> alumnos) {
+        System.out.println("Listado de Alumnos:");
         for (Alumno alumno : alumnos) {
-            System.out.println(alumno);
+            System.out.println(alumno.getNombreCompleto());
         }
+        System.out.println();
     }
 
     public void votacion(List<Alumno> alumnos) {
         Random random = new Random();
-        Set<Alumno> votantes = new HashSet<>();
 
-        for (Alumno votante : alumnos) {
-            Set<Alumno> votados = new HashSet<>();
-            while (votados.size() < 3) {
+        for (Alumno alumno : alumnos) {
+            Set<Alumno> votos = new HashSet<>();
+            int numVotos = 0;
+
+            while (numVotos < NUM_VOTOS) {
                 Alumno alumnoVotado = alumnos.get(random.nextInt(alumnos.size()));
-                if (votante != alumnoVotado && !votados.contains(alumnoVotado)) {
-                    votados.add(alumnoVotado);
+                if (alumno != alumnoVotado && !votos.contains(alumnoVotado)) {
+                    votos.add(alumnoVotado);
+                    numVotos++;
+                    alumnoVotado.incrementarVotos();
                 }
             }
 
-            Voto voto = new Voto(votante, votados);
-            votante.incrementarVotos();
-            for (Alumno votado : votados) {
-                votado.incrementarVotos();
-            }
-
-            votantes.add(votante);
+            recuentoVotos(votos);
         }
+    }
 
+    public void recuentoVotos(Set<Alumno> alumnos) {
+        System.out.println("Recuento de Votos:");
         for (Alumno alumno : alumnos) {
             System.out.println("Alumno: " + alumno.getNombreCompleto());
             System.out.println("Cantidad de votos: " + alumno.getCantidadVotos());
-            System.out.println("Votos recibidos:");
-            for (Voto voto : votos) {
-                if (voto.getAlumnosVotados().contains(alumno)) {
-                    System.out.println("- " + voto.getAlumno().getNombreCompleto());
-                }
-            }
             System.out.println();
         }
     }
 
-    public void recuentoVotos(List<Alumno> alumnos) {
-        // Implementar lógica para el recuento de votos si es necesario
-    }
-
     public void mostrarFacilitadores(List<Alumno> alumnos) {
-        // Implementar lógica para mostrar los facilitadores y suplentes
+        List<Alumno> filtroFacilitadores = new ArrayList<>(alumnos);
+        List<Alumno> facilitadores = obtenerFacilitadores(filtroFacilitadores, NUM_FACILITADORES+NUM_FACILITADORES_SUPLENTES);
+        List<Alumno> facilitadoresSuplentes = obtenerFacilitadores(facilitadores, NUM_FACILITADORES_SUPLENTES);
+
+        System.out.println("Facilitadores:");
+        Iterator<Alumno> losFacilitadores = facilitadores.iterator();
+        int cnt = 0;
+        while (losFacilitadores.hasNext()) {
+            System.out.println((cnt + 1) + ". " + losFacilitadores.next().getNombreCompleto());
+
+        }
+
+        System.out.println("\nFacilitadores Suplentes:");
+        for (int i = 0; i < facilitadoresSuplentes.size(); i++) {
+            System.out.println((i + 1) + ". " + facilitadoresSuplentes.get(i).getNombreCompleto());
+        }
     }
 
+    private List<Alumno> obtenerFacilitadores(List<Alumno> alumnos, int cantidad) {
+        alumnos.sort((a1, a2) -> Integer.compare(a2.getCantidadVotos(), a1.getCantidadVotos()));
+        return alumnos.subList(0, cantidad);
+    }
 }
