@@ -76,7 +76,7 @@ public class Simulador {
         for (String combinaciones : combinaDNI) {
             noDuplicados.add(combinaciones);
         }
-        
+
         for (String noDuplicado : noDuplicados) {
             combinacionesDNI.add(noDuplicado);
         }
@@ -132,20 +132,22 @@ public class Simulador {
 
     public void mostrarFacilitadores(List<Alumno> alumnos) {
         List<Alumno> filtroFacilitadores = new ArrayList<>(alumnos);
-        List<Alumno> facilitadores = obtenerFacilitadores(filtroFacilitadores, NUM_FACILITADORES+NUM_FACILITADORES_SUPLENTES);
+        //Se hace en listas diferentes para evitar concurrencia
+        List<Alumno> facilitadores = obtenerFacilitadores(filtroFacilitadores, NUM_FACILITADORES + NUM_FACILITADORES_SUPLENTES);
         List<Alumno> facilitadoresSuplentes = obtenerFacilitadores(facilitadores, NUM_FACILITADORES_SUPLENTES);
 
         System.out.println("Facilitadores:");
         Iterator<Alumno> losFacilitadores = facilitadores.iterator();
         int cnt = 0;
         while (losFacilitadores.hasNext()) {
-            System.out.println((cnt + 1) + ". " + losFacilitadores.next().getNombreCompleto());
+            Alumno aMostrar = losFacilitadores.next();
+            System.out.println((cnt + 1) + ". " + aMostrar.getNombreCompleto() + ", DNI: " + aMostrar.getDNI());
 
         }
 
         System.out.println("\nFacilitadores Suplentes:");
         for (int i = 0; i < facilitadoresSuplentes.size(); i++) {
-            System.out.println((i + 1) + ". " + facilitadoresSuplentes.get(i).getNombreCompleto());
+            System.out.println((i + 1) + ". " + facilitadoresSuplentes.get(i).getNombreCompleto()+", DNI: "+ facilitadoresSuplentes.get(i).getDNI());
         }
     }
 
