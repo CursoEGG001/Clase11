@@ -70,8 +70,15 @@ public class Simulador {
             while (dni.length() < 8) {
                 dni += random.nextInt(10);
             }
-            combinaDNI.add(dni);
+            boolean noValidoDNI = ((Integer.parseInt(dni.substring(0, 2)) > 44) || (Integer.parseInt(dni.substring(0, 2)) < 8));
+            if (noValidoDNI) {
+                i--;
+            } else {
+                combinaDNI.add(dni);
+            }
         }
+
+        // Damos por sentado que duplicados no apareceran despues de esto.
         HashSet<String> noDuplicados = new HashSet<>();
         for (String combinaciones : combinaDNI) {
             noDuplicados.add(combinaciones);
@@ -80,7 +87,14 @@ public class Simulador {
         for (String noDuplicado : noDuplicados) {
             combinacionesDNI.add(noDuplicado);
         }
+        if (noDuplicados.size() < cantidad) {
+            int Restan = cantidad - noDuplicados.size();
+            System.out.println("Restan conseguir " + Restan + " DNIs más");
+            for (int i = 0; i < Restan; i++) {
+                combinacionesDNI.add(String.valueOf((random.nextInt(44 - 8) + 8)).concat(String.valueOf(random.nextInt(999999))));
+            }
 
+        }
         return combinacionesDNI;
     }
 
@@ -147,7 +161,7 @@ public class Simulador {
 
         System.out.println("\nFacilitadores Suplentes:");
         for (int i = 0; i < facilitadoresSuplentes.size(); i++) {
-            System.out.println((i + 1) + ". " + facilitadoresSuplentes.get(i).getNombreCompleto()+", DNI: "+ facilitadoresSuplentes.get(i).getDNI());
+            System.out.println((i + 1) + ". " + facilitadoresSuplentes.get(i).getNombreCompleto() + ", DNI: " + facilitadoresSuplentes.get(i).getDNI());
         }
     }
 
