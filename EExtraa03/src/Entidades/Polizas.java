@@ -24,6 +24,8 @@ public class Polizas {
 
     private Vehiculo vehiculo;
 
+    private boolean estado;
+
     public String getNumPoliza() {
         return numPoliza;
     }
@@ -123,5 +125,9 @@ public class Polizas {
     }
 
     public Polizas() {
+    }
+
+    public void setEstado(boolean nuevoEstado) {
+        this.estado = nuevoEstado;
     }
 }
