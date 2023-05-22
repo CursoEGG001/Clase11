@@ -9,6 +9,7 @@ package Servicio;
  * @author pc
  */
 import Entidad.Alumno;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -156,12 +157,20 @@ public class Simulador {
         while (losFacilitadores.hasNext()) {
             Alumno aMostrar = losFacilitadores.next();
             System.out.println((cnt + 1) + ". " + aMostrar.getNombreCompleto() + ", DNI: " + aMostrar.getDNI());
-
+            cnt++;
         }
 
-        System.out.println("\nFacilitadores Suplentes:");
-        for (int i = 0; i < facilitadoresSuplentes.size(); i++) {
-            System.out.println((i + 1) + ". " + facilitadoresSuplentes.get(i).getNombreCompleto() + ", DNI: " + facilitadoresSuplentes.get(i).getDNI());
+        //Usamos facilitadores para obtener solo los suplentes.
+        filtroFacilitadores = new ArrayList<Alumno>(facilitadoresSuplentes);
+        for (Alumno facilitador : filtroFacilitadores) {
+            facilitadores.remove(facilitador);
+        }
+        System.out.println(
+                "\nFacilitadores Suplentes:");
+        for (int i = 0; i < facilitadores.size(); i++) {
+
+            System.out.println((i + 1) + ". " + facilitadores.get(i).getNombreCompleto() + ", DNI: " + facilitadores.get(i).getDNI());
+
         }
     }
 
