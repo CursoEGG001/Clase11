@@ -100,7 +100,6 @@ public class Simulador {
     }
 
     public void asignarNombresDNI(List<Alumno> alumnos) {
-        Random random = new Random();
         List<String> docAsignables = generarCombinacionesDNI(alumnos.size());
         for (Alumno alumno : alumnos) {
             String dni = docAsignables.get(alumnos.indexOf(alumno));
