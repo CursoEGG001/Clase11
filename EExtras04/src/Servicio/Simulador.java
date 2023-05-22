@@ -159,6 +159,7 @@ public class Simulador {
             cnt++;
         }
 
+        //Usamos facilitadores para obtener solo los suplentes.
         //Usamos facilitadores a suplir para obtener solo los suplentes.
         filtroFacilitadores = new ArrayList<Alumno>(facilitadoresSuplentes);
         for (Alumno facilitador : filtroFacilitadores) {
