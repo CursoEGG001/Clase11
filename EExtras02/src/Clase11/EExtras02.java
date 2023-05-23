@@ -60,7 +60,7 @@ public class EExtras02 {
                 if (this.seats[i][j]) {
                     System.out.print("X ");
                 } else {
-                    System.out.print("  ");
+                    System.out.print("⬜");
                 }
             }
             System.out.println();
