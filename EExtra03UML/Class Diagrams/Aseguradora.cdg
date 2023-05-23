@@ -2,7 +2,7 @@
 
 <ClassDiagram name="Aseguradora">
   <ClassDiagramComponents>
-    <Class name="Cuota" package="" visibility="public" xPosition="53.0" yPosition="131.0">
+    <Class name="Cuota" package="" visibility="public" xPosition="70.0" yPosition="131.0">
       <Fields>
         <Field name="numCuotas" type="int" visibility="private"/>
         <Field name="montoTotal" type="double" visibility="private"/>
@@ -13,7 +13,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Polizas" package="" visibility="public" xPosition="282.0" yPosition="131.0">
+    <Class name="Polizas" package="" visibility="public" xPosition="374.0" yPosition="254.0">
       <Fields>
         <Field name="numPoliza" type="String" visibility="private"/>
         <Field name="fechaInicio" type="Date" visibility="private"/>
@@ -29,7 +29,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Vehiculo" package="" visibility="public" xPosition="520.0" yPosition="188.0">
+    <Class name="Vehiculo" package="" visibility="public" xPosition="662.0" yPosition="38.0">
       <Fields>
         <Field name="marca" type="String" visibility="private"/>
         <Field name="modelo" type="String" visibility="private"/>
@@ -42,7 +42,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Clientes" package="" visibility="public" xPosition="737.0" yPosition="226.0">
+    <Class name="Clientes" package="" visibility="public" xPosition="1022.0" yPosition="309.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="apellido" type="String" visibility="private"/>
