@@ -21,7 +21,7 @@ public class Baraja {
 
     public void Barajar() {
         this.cards = new ArrayList<>();
-        for (int i = 1; i <= 12; i++) {
+        for (int i = 1; i < 12; i++) {
             for (Palo suit : Palo.values()) {
                 this.cards.add(new Cartas(i, suit));
             }
