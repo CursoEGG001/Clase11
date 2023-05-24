@@ -9,7 +9,6 @@ package Servicio;
  * @author pc
  */
 import Entidad.Alumno;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -161,7 +160,7 @@ public class Simulador {
 
         //Usamos facilitadores para obtener solo los suplentes.
         //Usamos facilitadores a suplir para obtener solo los suplentes.
-        filtroFacilitadores = new ArrayList<Alumno>(facilitadoresSuplentes);
+        filtroFacilitadores = new ArrayList<>(facilitadoresSuplentes);
         for (Alumno facilitador : filtroFacilitadores) {
             facilitadores.remove(facilitador);
         }
