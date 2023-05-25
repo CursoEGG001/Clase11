@@ -5,6 +5,7 @@
 package clase11;
 
 import Entidades.Clientes;
+import Entidades.Cuota;
 import Entidades.Polizas;
 import Entidades.Vehiculo;
 import java.text.ParseException;
@@ -127,7 +128,14 @@ public class EExtraa03 {
         }
 
         System.out.println("Ingrese la cantidad de cuotas:");
-        poliza.setCuotas(scanner.nextInt());
+        int cantCuotas = scanner.nextInt();
+        List<Cuota> creaCuotas = new ArrayList<>();
+        for (int i = 0; i < cantCuotas - 1; i++) {
+            Cuota cuotaAgregada = new Cuota();
+            creaCuotas.add(cuotaAgregada);
+            poliza.setCuotas(creaCuotas);
+        }
+
         scanner.nextLine(); // Consumir el salto de línea pendiente
 
         System.out.println("Ingrese la forma de pago:");
