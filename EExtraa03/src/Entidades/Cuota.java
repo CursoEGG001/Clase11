@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Cuota {
 
-    private int numCuotas;
+    private int numCuota;
 
     private double montoTotal;
 
@@ -16,15 +16,15 @@ public class Cuota {
 
     @Override
     public String toString() {
-        return "Cuota{" + "numCuotas=" + numCuotas + ", montoTotal=" + montoTotal + ", Pagada=" + Pagada + ", fechaVencimiento=" + fechaVencimiento + ", formaPago=" + formaPago + '}';
+        return "Cuota{" + "numCuota=" + numCuota + ", montoTotal=" + montoTotal + ", Pagada=" + Pagada + ", fechaVencimiento=" + fechaVencimiento + ", formaPago=" + formaPago + '}';
     }
 
-    public int getNumCuotas() {
-        return numCuotas;
+    public int getNumCuota() {
+        return numCuota;
     }
 
-    public void setNumCuotas(int numCuotas) {
-        this.numCuotas = numCuotas;
+    public void setNumCuota(int numCuotas) {
+        this.numCuota = numCuotas;
     }
 
     public double getMontoTotal() {
@@ -59,8 +59,8 @@ public class Cuota {
         this.formaPago = formaPago;
     }
 
-    public Cuota(int numCuotas, double montoTotal, boolean Pagada, Date fechaVencimiento, String formaPago) {
-        this.numCuotas = numCuotas;
+    public Cuota(int numCuota, double montoTotal, boolean Pagada, Date fechaVencimiento, String formaPago) {
+        this.numCuota = numCuota;
         this.montoTotal = montoTotal;
         this.Pagada = Pagada;
         this.fechaVencimiento = fechaVencimiento;

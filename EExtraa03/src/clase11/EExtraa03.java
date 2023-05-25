@@ -131,7 +131,7 @@ public class EExtraa03 {
         int cantCuotas = scanner.nextInt();
         List<Cuota> creaCuotas = new ArrayList<>();
         for (int i = 0; i < cantCuotas - 1; i++) {
-            Cuota cuotaAgregada = new Cuota();
+            Cuota cuotaAgregada = new Cuota(i,0,false,new Date(),"debito");
             creaCuotas.add(cuotaAgregada);
             poliza.setCuotas(creaCuotas);
         }

@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.util.List;
+
 public class Clientes {
 
     private String nombre;
@@ -11,6 +13,8 @@ public class Clientes {
     private String domicilio;
 
     private String telefono;
+    
+    private List<Vehiculo> autos;
 
     @Override
     public String toString() {
