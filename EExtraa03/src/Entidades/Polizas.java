@@ -1,6 +1,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.List;
 
 public class Polizas {
 
@@ -8,7 +9,7 @@ public class Polizas {
 
     private Date fechaInicio;
 
-    private int cuotas;
+    private List<Cuota> cuotas;
 
     private String formaPago;
 
@@ -42,11 +43,11 @@ public class Polizas {
         this.fechaInicio = fechaInicio;
     }
 
-    public int getCuotas() {
+    public List<Cuota> getCuotas() {
         return cuotas;
     }
 
-    public void setCuotas(int cuotas) {
+    public void setCuotas(List<Cuota> cuotas) {
         this.cuotas = cuotas;
     }
 
@@ -106,7 +107,7 @@ public class Polizas {
         this.vehiculo = vehiculo;
     }
 
-    public Polizas(String numPoliza, Date fechaInicio, int cuotas, String formaPago, double montoAsegurado, boolean incluyeGranizo, double montoMaxGranizo, String tipoCobertura, Clientes cliente, Vehiculo vehiculo) {
+    public Polizas(String numPoliza, Date fechaInicio, List<Cuota> cuotas, String formaPago, double montoAsegurado, boolean incluyeGranizo, double montoMaxGranizo, String tipoCobertura, Clientes cliente, Vehiculo vehiculo) {
         this.numPoliza = numPoliza;
         this.fechaInicio = fechaInicio;
         this.cuotas = cuotas;
@@ -119,15 +120,33 @@ public class Polizas {
         this.vehiculo = vehiculo;
     }
 
-    @Override
-    public String toString() {
-        return "Polizas{" + "numPoliza=" + numPoliza + ", fechaInicio=" + fechaInicio + ", cuotas=" + cuotas + ", formaPago=" + formaPago + ", montoAsegurado=" + montoAsegurado + ", incluyeGranizo=" + incluyeGranizo + ", montoMaxGranizo=" + montoMaxGranizo + ", tipoCobertura=" + tipoCobertura + ", cliente=" + cliente + ", vehiculo=" + vehiculo + '}';
-    }
-
     public Polizas() {
     }
 
     public void setEstado(boolean nuevoEstado) {
         this.estado = nuevoEstado;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Polizas{");
+        sb.append("numPoliza=").append(numPoliza);
+        sb.append(", fechaInicio=").append(fechaInicio);
+
+        Cuota cuota=(cuotas.get(cuotas.size()-1));
+        sb.append(", cuota=").append(cuota.getMontoTotal());
+        sb.append(", formaPago=").append(formaPago);
+        sb.append(", montoAsegurado=").append(montoAsegurado);
+        sb.append(", incluyeGranizo=").append(incluyeGranizo);
+        sb.append(", montoMaxGranizo=").append(montoMaxGranizo);
+        sb.append(", tipoCobertura=").append(tipoCobertura);
+        sb.append(", cliente=").append(cliente);
+        sb.append(", vehiculo=").append(vehiculo);
+        sb.append(", estado=").append(estado);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    
 }
