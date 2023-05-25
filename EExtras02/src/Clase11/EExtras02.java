@@ -40,12 +40,14 @@ public class EExtras02 {
     public void addSpectator(String name, int age, int money) {
         if (age >= this.minimumAge && money >= this.priceOfTicket) {
             boolean foundSeat = false;
-            for (int i = 0; i < 8 && !foundSeat; i++) {
+            for (int i = 8 - 1; i >= 0 && !foundSeat; i--) {
                 for (int j = 0; j < 6 && !foundSeat; j++) {
-                    if (!this.seats[i][j]) {
-                        this.seats[i][j] = true;
+                    int rFila = (int) (Math.random() * (8-1));
+                    int rCol = (int) (Math.random() * (6-1));
+                    if (!this.seats[rFila][rCol]) {
+                        this.seats[rFila][rCol] = true;
                         foundSeat = true;
-                        System.out.println(name + " se asentó en el asiento " + (char) ('A' + i) + (j + 1));
+                        System.out.println(name + " se asentó en el asiento " + (rFila + 1) + ((char) ('A' + rCol)));
                     }
                 }
             }
@@ -55,12 +57,12 @@ public class EExtras02 {
     }
 
     public void showSeats() {
-        for (int i = 0; i < 8; i++) {
+        for (int i = 8 - 1; i >= 0; i--) {
             for (int j = 0; j < 6; j++) {
                 if (this.seats[i][j]) {
-                    System.out.print("X ");
+                    System.out.print((i + 1) + String.valueOf((char) ('A' + j)) + "X |");
                 } else {
-                    System.out.print("⬜");
+                    System.out.print((i + 1) + String.valueOf((char) ('A' + j)) + "_ |");
                 }
             }
             System.out.println();
@@ -73,10 +75,10 @@ public class EExtras02 {
         EExtras02 cinema = new EExtras02();
 
         System.out.println("¡Bienvenidos al cine!");
-        System.out.println("La película presentada hoy es" + cinema.movieTitle);
+        System.out.println("La película presentada hoy es " + cinema.movieTitle);
         System.out.println("La película dura " + cinema.movieDuration + " minutos.");
         System.out.println("La Edad permitida para ver ésta es " + cinema.minimumAge);
-        System.out.println("El precio de la entrada es" + cinema.priceOfTicket);
+        System.out.println("El precio de la entrada es " + cinema.priceOfTicket + " pesos");
 
         String answer = "S";
         while (answer.equals("S")) {
