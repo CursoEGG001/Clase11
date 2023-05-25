@@ -43,7 +43,6 @@ public class CineJFX extends Application {
         Label statusLabel = new Label("Preparado...");
         statusLabel.setAlignment(Pos.BOTTOM_RIGHT);
 
-
         TextField nameTextField = new TextField();
         TextField ageTextField = new TextField();
         TextField moneyTextField = new TextField();
@@ -68,11 +67,15 @@ public class CineJFX extends Application {
         }
 
         addSpectatorButton.setOnAction((ActionEvent event) -> {
-            String name = nameTextField.getText();
-            int age = Integer.parseInt(ageTextField.getText());
-            int money = Integer.parseInt(moneyTextField.getText());
+            String name = "";
+            int age = 0;
+            int money = 0;
 
-            if (age >= minimumAge && money >= priceOfTicket) {
+                name = nameTextField.getText();
+                age = Integer.parseInt(ageTextField.getText());
+                money = Integer.parseInt(moneyTextField.getText());
+
+            if (age >= minimumAge && money >= priceOfTicket && name != "") {
                 boolean foundSeat = false;
                 for (int i = 0; i < 8 && !foundSeat; i++) {
                     for (int j = 0; j < 6 && !foundSeat; j++) {
@@ -98,21 +101,21 @@ public class CineJFX extends Application {
         });
 
         GridPane gridPane = new GridPane();
-        gridPane.add(movieTitleLabel, 0, 0);
-        gridPane.add(movieDurationLabel, 1, 0);
-        gridPane.add(minimumAgeLabel, 2, 0);
-        gridPane.add(priceOfTicketLabel, 3, 0);
-        gridPane.add(nameLabel, 0, 1);
-        gridPane.add(nameTextField, 1, 1);
-        gridPane.add(ageLabel, 2, 1);
-        gridPane.add(ageTextField, 3, 1);
-        gridPane.add(moneyLabel, 0, 2);
-        gridPane.add(moneyTextField, 1, 2);
-        gridPane.add(addSpectatorButton, 3, 2);
-        gridPane.add(seatPane, 0, 3, 4, 1);
-        gridPane.add(statusLabel, 0, 4,4,1);
+        gridPane.add(movieTitleLabel, 0, 0, 3, 1);
+        gridPane.add(movieDurationLabel, 0, 1, 1, 1);
+        gridPane.add(minimumAgeLabel, 3, 1, 3, 1);
+        gridPane.add(priceOfTicketLabel, 3, 5, 1, 1);
+        gridPane.add(nameLabel, 0, 4, 1, 1);
+        gridPane.add(nameTextField, 1, 4, 1, 1);
+        gridPane.add(ageLabel, 2, 4, 1, 1);
+        gridPane.add(ageTextField, 3, 4, 1, 1);
+        gridPane.add(moneyLabel, 0, 5);
+        gridPane.add(moneyTextField, 1, 5);
+        gridPane.add(addSpectatorButton, 0, 6, 4, 1);
+        gridPane.add(seatPane, 0, 7, 4, 1);
+        gridPane.add(statusLabel, 0, 8, 4, 1);
 
-        Scene scene = new Scene(gridPane, 400, 400);
+        Scene scene = new Scene(gridPane, 480, 440);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
