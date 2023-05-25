@@ -112,8 +112,8 @@ public class CineJFX extends Application {
         gridPane.add(moneyLabel, 0, 5);
         gridPane.add(moneyTextField, 1, 5);
         gridPane.add(addSpectatorButton, 0, 6, 4, 1);
-        gridPane.add(seatPane, 0, 7, 4, 1);
-        gridPane.add(statusLabel, 0, 8, 4, 1);
+        gridPane.add(seatPane, 0, 7, 6, 8);
+        gridPane.add(statusLabel, 0, 15, 6, 1);
 
         Scene scene = new Scene(gridPane, 480, 440);
         primaryStage.setScene(scene);
