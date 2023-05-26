@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -56,6 +58,10 @@ public class CineJFX extends Application {
         seatPane.setHgap(10);
         seatPane.setVgap(10);
         seatPane.setPadding(new Insets(10));
+        
+        HBox primaryPane = new HBox();
+        VBox secondaryPane = new VBox();
+        VBox fieldsPane = new VBox();
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
@@ -99,23 +105,28 @@ public class CineJFX extends Application {
 
             }
         });
-
+        
         GridPane gridPane = new GridPane();
-        gridPane.add(movieTitleLabel, 0, 0, 3, 1);
-        gridPane.add(movieDurationLabel, 0, 1, 1, 1);
-        gridPane.add(minimumAgeLabel, 3, 1, 3, 1);
-        gridPane.add(priceOfTicketLabel, 3, 5, 1, 1);
-        gridPane.add(nameLabel, 0, 4, 1, 1);
-        gridPane.add(nameTextField, 1, 4, 1, 1);
-        gridPane.add(ageLabel, 2, 4, 1, 1);
-        gridPane.add(ageTextField, 3, 4, 1, 1);
-        gridPane.add(moneyLabel, 0, 5);
-        gridPane.add(moneyTextField, 1, 5);
-        gridPane.add(addSpectatorButton, 0, 6, 4, 1);
-        gridPane.add(seatPane, 0, 7, 6, 8);
-        gridPane.add(statusLabel, 0, 15, 6, 1);
+        primaryPane.getChildren().addAll(secondaryPane,fieldsPane);
 
-        Scene scene = new Scene(gridPane, 480, 440);
+        secondaryPane.getChildren().addAll(movieTitleLabel,minimumAgeLabel,nameLabel,ageLabel,moneyLabel,new Label(),gridPane,statusLabel);
+        fieldsPane.getChildren().addAll(movieDurationLabel,priceOfTicketLabel,nameTextField,ageTextField,moneyTextField);
+//        gridPane.add(movieTitleLabel, 0, 0, 3, 1);
+//        gridPane.add(movieDurationLabel, 0, 0, 1, 1);
+//        gridPane.add(minimumAgeLabel, 3, 0, 3, 1);
+//        gridPane.add(priceOfTicketLabel, 3, 4, 1, 1);
+//        gridPane.add(nameLabel, 0, 4, 1, 1);
+//        gridPane.add(nameTextField, 1, 4, 1, 1);
+//        gridPane.add(ageLabel, 2, 4, 1, 1);
+//        gridPane.add(ageTextField, 3, 4, 1, 1);
+//        gridPane.add(moneyLabel, 2, 5);
+//        gridPane.add(moneyTextField, 3, 5);
+        gridPane.add(addSpectatorButton, 0, 0, 6, 1);
+        gridPane.add(seatPane, 0, 2, 6, 8);
+//        gridPane.add(statusLabel, 0, 15, 6, 1);
+
+        Scene scene = new Scene(primaryPane, 600, 500);
+        primaryStage.setTitle("CineJFX");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
