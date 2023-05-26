@@ -38,7 +38,7 @@ public class RuletaRusaDeAgua extends Application {
         BorderPane stagePane = new BorderPane();
 
         // Create a thick circumference
-        Ellipse ellipse = new Ellipse(200, 100, 100, 100);
+        Ellipse ellipse = new Ellipse(200, 100, 150, 150);
         ellipse.setFill(Color.TRANSPARENT);
         ellipse.setStroke(Color.GRAY);
         ellipse.setStrokeWidth(10);
@@ -68,20 +68,27 @@ public class RuletaRusaDeAgua extends Application {
             // Update the text
             loHizo.setText((revolver[randomIndex]) ? "Ahora Sí" : "No lo funó");
         });
-        button.setAlignment(Pos.CENTER);
-        loHizo.setTextAlignment(TextAlignment.JUSTIFY);
+
+        // stack appropiately the elements
         primaryPane.getChildren().addAll(stackPane, loHizo);
         secondaryPane.getChildren().add(primaryPane);
         primaryPane.getChildren().add(button);
+
+        // Set properties of position
+        button.setAlignment(Pos.CENTER);
+        loHizo.setTextAlignment(TextAlignment.JUSTIFY);
+        secondaryPane.setAlignment(Pos.BASELINE_LEFT);
+        primaryPane.setAlignment(Pos.BASELINE_CENTER);
+
         stagePane.getChildren().add(secondaryPane);
         return stagePane;
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-
+        stage.setTitle("Los funados");
         stage.show();
-        stage.setScene(new Scene(createContent(), 300, 300));
+        stage.setScene(new Scene(createContent(), 320, 400));
     }
 
     public static void main(String[] args) {
@@ -93,6 +100,10 @@ public class RuletaRusaDeAgua extends Application {
         // Check if the array is null or empty
         if (tambor == null || tambor.length == 0) {
             return null;
+        }
+        for (int i = 0; i < tambor.length; i++) {
+            tambor[i] = false;
+
         }
 
         // Generate a random index between 0 and n-1
