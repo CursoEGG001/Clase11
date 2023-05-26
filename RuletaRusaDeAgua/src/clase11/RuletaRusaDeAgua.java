@@ -6,6 +6,7 @@ package clase11;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class RuletaRusaDeAgua extends Application {
@@ -50,7 +52,7 @@ public class RuletaRusaDeAgua extends Application {
         Circle circle6 = new Circle(200 + 10 * Math.cos(Math.PI * 5 / 6), 200 + 10 * Math.sin(Math.PI * 5 / 6), 10, (revolver[5] ? Color.BLUEVIOLET : Color.RED));
         Text loHizo = new Text((revolver[disparos]) ? "Le dio" : "Zafó");
         // Add the circles to the StackPane
-        stackPane.getChildren().addAll(ellipse, circle1, circle2, circle3, circle4, circle5, circle6, loHizo);
+        stackPane.getChildren().addAll(ellipse, circle1, circle2, circle3, circle4, circle5, circle6);
 
         Button button = new Button("Corchazo");
         button.setOnAction((ActionEvent e) -> {
@@ -66,8 +68,9 @@ public class RuletaRusaDeAgua extends Application {
             // Update the text
             loHizo.setText((revolver[randomIndex]) ? "Ahora Sí" : "No lo funó");
         });
-
-        primaryPane.getChildren().add(stackPane);
+        button.setAlignment(Pos.CENTER);
+        loHizo.setTextAlignment(TextAlignment.JUSTIFY);
+        primaryPane.getChildren().addAll(stackPane, loHizo);
         secondaryPane.getChildren().add(primaryPane);
         primaryPane.getChildren().add(button);
         stagePane.getChildren().add(secondaryPane);
