@@ -4,6 +4,7 @@ package clase11;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMain.java to edit this template
  */
+import com.sun.javafx.css.Style;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -56,7 +57,7 @@ public class CineJFX extends Application {
         seatPane.setPrefRows(8); // Establecer el número de filas
         seatPane.setHgap(10);
         seatPane.setVgap(10);
-        seatPane.setPadding(new Insets(10));
+        seatPane.setPadding(new Insets(7));
 
         HBox primaryPane = new HBox();
         VBox secondaryPane = new VBox();
@@ -113,11 +114,14 @@ public class CineJFX extends Application {
         moneyPane.getChildren().addAll(  moneyLabel,moneyTextField);
         GridPane gridPane = new GridPane();
 
-        minimumAgeLabel.setAlignment(Pos.TOP_LEFT);
+        minimumAgeLabel.setAlignment(Pos.TOP_CENTER);
         nameLabel.setAlignment(Pos.TOP_RIGHT);
         ageLabel.setAlignment(Pos.CENTER_RIGHT);
         moneyLabel.setAlignment(Pos.BASELINE_RIGHT);
         addSpectatorButton.setAlignment(Pos.BOTTOM_RIGHT);
+        
+        movieTitleLabel.setStyle("{-fx-font: Serif ; -fx-font-size: 16px; -fx-text-fill: BLUEVIOLET }");
+        minimumAgeLabel.setStyle("{ -fx-font: monospace ;-fx-font-style: italic ; -fx-font-weight: bold}");
 
         secondaryPane.getChildren().addAll(movieTitleLabel, minimumAgeLabel,  gridPane, statusLabel);
         fieldsPane.getChildren().addAll(movieDurationLabel, priceOfTicketLabel,namePane,agePane,moneyPane);
@@ -135,7 +139,7 @@ public class CineJFX extends Application {
         gridPane.add(seatPane, 0, 2, 6, 8);
 //        gridPane.add(statusLabel, 0, 15, 6, 1);
 
-        secondaryPane.setAlignment(Pos.TOP_RIGHT);
+        secondaryPane.setAlignment(Pos.TOP_CENTER);
         statusLabel.setAlignment(Pos.BASELINE_LEFT);
 
         primaryPane.getChildren().addAll(secondaryPane, fieldsPane);
