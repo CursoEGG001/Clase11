@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -66,12 +67,17 @@ public class CineJFX extends Application {
         HBox agePane = new HBox();
         HBox moneyPane = new HBox();
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 7; i >= 0; i--) {
             for (int j = 0; j < 6; j++) {
+                StackPane seatStack = new StackPane();
                 Circle seatCircle = new Circle(10);
+                Label seatLabel = new Label(String.valueOf((int) i + 1) + (char) ('A' + j));
                 seatCircle.setFill(seats[i][j] ? Color.RED : Color.GREEN);
+                seatLabel.setStyle("{ -fx-font-weight: bold;-fx-font-fill: MAGENTA }");
                 seatCircles.add(seatCircle);
-                seatPane.getChildren().add(seatCircle);
+                seatStack.getChildren().addAll(seatCircle, seatLabel);
+                seatPane.getChildren().add(seatStack);
+
             }
         }
 
@@ -84,9 +90,9 @@ public class CineJFX extends Application {
             age = Integer.parseInt(ageTextField.getText());
             money = Integer.parseInt(moneyTextField.getText());
 
-            if (age >= minimumAge && money >= priceOfTicket && name != "") {
+            if (age >= minimumAge && money >= priceOfTicket && !"".equals(name)) {
                 boolean foundSeat = false;
-                for (int i = 0; i < 8 && !foundSeat; i++) {
+                for (int i = 7; i > 0 && !foundSeat; i--) {
                     for (int j = 0; j < 6 && !foundSeat; j++) {
                         if (!seats[i][j]) {
                             int randRow = (int) (Math.random() * 7);
@@ -94,7 +100,7 @@ public class CineJFX extends Application {
                             seats[randRow][randCol] = true;
                             foundSeat = true;
                             seatCircles.get(randRow * 6 + randCol).setFill(Color.RED);
-                            String message = name + " se asentó en el asiento " + (char) ('A' + randRow) + (j + randCol);
+                            String message = name + " se asentó en el asiento " + ((char) ('A' + randCol)) + ((int) 8 - randRow);
                             statusLabel.setText(message);
                             showStatusMessage(message);
 
@@ -109,9 +115,9 @@ public class CineJFX extends Application {
             }
         });
 
-        namePane.getChildren().addAll(nameLabel,nameTextField);
-        agePane.getChildren().addAll(ageLabel,ageTextField);
-        moneyPane.getChildren().addAll(  moneyLabel,moneyTextField);
+        namePane.getChildren().addAll(nameLabel, nameTextField);
+        agePane.getChildren().addAll(ageLabel, ageTextField);
+        moneyPane.getChildren().addAll(moneyLabel, moneyTextField);
         GridPane gridPane = new GridPane();
 
         minimumAgeLabel.setAlignment(Pos.TOP_CENTER);
@@ -119,12 +125,12 @@ public class CineJFX extends Application {
         ageLabel.setAlignment(Pos.CENTER_RIGHT);
         moneyLabel.setAlignment(Pos.BASELINE_RIGHT);
         addSpectatorButton.setAlignment(Pos.BOTTOM_RIGHT);
-        
+
         movieTitleLabel.setStyle("{-fx-font: Serif ; -fx-font-size: 16px; -fx-text-fill: BLUEVIOLET }");
         minimumAgeLabel.setStyle("{ -fx-font: monospace ;-fx-font-style: italic ; -fx-font-weight: bold}");
 
-        secondaryPane.getChildren().addAll(movieTitleLabel, minimumAgeLabel,  gridPane, statusLabel);
-        fieldsPane.getChildren().addAll(movieDurationLabel, priceOfTicketLabel,namePane,agePane,moneyPane);
+        secondaryPane.getChildren().addAll(movieTitleLabel, minimumAgeLabel, gridPane, statusLabel);
+        fieldsPane.getChildren().addAll(movieDurationLabel, priceOfTicketLabel, namePane, agePane, moneyPane);
 //        gridPane.add(movieTitleLabel, 0, 0, 3, 1);
 //        gridPane.add(movieDurationLabel, 0, 0, 1, 1);
 //        gridPane.add(minimumAgeLabel, 3, 0, 3, 1);
@@ -144,7 +150,7 @@ public class CineJFX extends Application {
 
         primaryPane.getChildren().addAll(secondaryPane, fieldsPane);
 
-        Scene scene = new Scene(primaryPane, 600, 500);
+        Scene scene = new Scene(primaryPane, 640, 512);
         primaryStage.setTitle("CineJFX");
         primaryStage.setScene(scene);
         primaryStage.show();
