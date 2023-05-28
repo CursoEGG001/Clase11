@@ -23,6 +23,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author pc
+ */
 public class CineJFX extends Application {
 
     private String movieTitle = "The Shawshank Redemption";
@@ -34,6 +38,10 @@ public class CineJFX extends Application {
     private boolean[][] seats = new boolean[8][6];
     private ArrayList<Circle> seatCircles = new ArrayList<>();
 
+    /**
+     *
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
         Label movieTitleLabel = new Label("Película: " + movieTitle);
@@ -56,8 +64,8 @@ public class CineJFX extends Application {
         seatPane.setPrefTileHeight(22); // Establecer la altura deseada de cada celda
         seatPane.setPrefColumns(6); // Establecer el número de columnas
         seatPane.setPrefRows(8); // Establecer el número de filas
-        seatPane.setHgap(10);
-        seatPane.setVgap(10);
+        seatPane.setHgap(8);
+        seatPane.setVgap(9);
         seatPane.setPadding(new Insets(7));
 
         HBox primaryPane = new HBox();
@@ -70,10 +78,10 @@ public class CineJFX extends Application {
         for (int i = 7; i >= 0; i--) {
             for (int j = 0; j < 6; j++) {
                 StackPane seatStack = new StackPane();
-                Circle seatCircle = new Circle(10);
+                Circle seatCircle = new Circle(12);
                 Label seatLabel = new Label(String.valueOf((int) i + 1) + (char) ('A' + j));
-                seatCircle.setFill(seats[i][j] ? Color.RED : Color.GREEN);
-                seatLabel.setStyle("{ -fx-font-weight: bold;-fx-font-fill: MAGENTA }");
+                seatCircle.setFill(seats[i][j] ? Color.DARKRED : Color.GREENYELLOW);
+                seatLabel.setStyle("{ -fx-font: normal; -fx-font-weight: bold; -fx-text-fill: Orange }");
                 seatCircles.add(seatCircle);
                 seatStack.getChildren().addAll(seatCircle, seatLabel);
                 seatPane.getChildren().add(seatStack);
@@ -90,19 +98,26 @@ public class CineJFX extends Application {
             age = Integer.parseInt(ageTextField.getText());
             money = Integer.parseInt(moneyTextField.getText());
 
+            // Asignador de asientos
             if (age >= minimumAge && money >= priceOfTicket && !"".equals(name)) {
                 boolean foundSeat = false;
                 for (int i = 7; i > 0 && !foundSeat; i--) {
                     for (int j = 0; j < 6 && !foundSeat; j++) {
                         if (!seats[i][j]) {
-                            int randRow = (int) (Math.random() * 7);
-                            int randCol = (int) (Math.random() * 5);
-                            seats[randRow][randCol] = true;
-                            foundSeat = true;
-                            seatCircles.get(randRow * 6 + randCol).setFill(Color.RED);
-                            String message = name + " se asentó en el asiento " + ((char) ('A' + randCol)) + ((int) 8 - randRow);
-                            statusLabel.setText(message);
-                            showStatusMessage(message);
+                            int randRow = (int) Math.floor(Math.random() * 8);
+                            int randCol = (int) Math.floor(Math.random() * 6);
+                            if (!seats[randRow][randCol] == true) {
+                                seats[randRow][randCol] = true;
+                                foundSeat = true;
+                                seatCircles.get(randRow * 6 + randCol).setFill(Color.RED);
+                                String message = name + " se asentó en el asiento " + ((char) ('A' + randCol)) + ((int) 8 - randRow);
+                                statusLabel.setText(message);
+                                showStatusMessage(message);
+                            } else {
+                                String message = name + "no se asentó en el asiento ";
+                                statusLabel.setText(message);
+                                showStatusMessage(message);
+                            }
 
                         }
                     }
@@ -156,12 +171,22 @@ public class CineJFX extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Pasa a System.out el mensaje que se ponga.
+     *
+     * @param message es el mensaje es un String para mostrar
+     */
     public void showStatusMessage(String message) {
-        // Aquí puedes usar la etiqueta de la barra de estado para mostrar el mensaje
+        // Aquí puedes usar la etiqueta de la barra de estado para mostrar el mensaje.
         System.out.println(message);
 
     }
 
+    /**
+     * Necesario en JavaFX para compatibilidad.
+     *
+     * @param args no procesa.
+     */
     public static void main(String[] args) {
         launch(args);
     }
