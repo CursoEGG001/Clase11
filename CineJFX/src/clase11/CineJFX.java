@@ -114,7 +114,7 @@ public class CineJFX extends Application {
                                 statusLabel.setText(message);
                                 showStatusMessage(message);
                             } else {
-                                String message = name + "no se asentó en el asiento ";
+                                String message = name + " no se asentó en el asiento ";
                                 statusLabel.setText(message);
                                 showStatusMessage(message);
                             }
