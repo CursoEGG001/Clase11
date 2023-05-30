@@ -44,15 +44,29 @@ public class RuletaRusaDeAgua extends Application {
         ellipse.setStrokeWidth(10);
 
         // Create 6 circles inscribed around the circumference
-        Circle circle1 = new Circle(200 + 10 * Math.cos(Math.PI * 0 / 6), 200 + 10 * Math.sin(Math.PI * 0 / 6), 50, (revolver[0] ? Color.BLUEVIOLET : Color.RED));
-        Circle circle2 = new Circle(200 + 10 * Math.cos(Math.PI * 1 / 6), 200 + 10 * Math.sin(Math.PI * 1 / 6), 45, (revolver[1] ? Color.BLUEVIOLET : Color.RED));
-        Circle circle3 = new Circle(200 + 10 * Math.cos(Math.PI * 2 / 6), 200 + 10 * Math.sin(Math.PI * 2 / 6), 35, (revolver[2] ? Color.BLUEVIOLET : Color.RED));
-        Circle circle4 = new Circle(200 + 10 * Math.cos(Math.PI * 3 / 6), 200 + 10 * Math.sin(Math.PI * 3 / 6), 30, (revolver[3] ? Color.BLUEVIOLET : Color.RED));
-        Circle circle5 = new Circle(200 + 10 * Math.cos(Math.PI * 4 / 6), 200 + 10 * Math.sin(Math.PI * 4 / 6), 20, (revolver[4] ? Color.BLUEVIOLET : Color.RED));
-        Circle circle6 = new Circle(200 + 10 * Math.cos(Math.PI * 5 / 6), 200 + 10 * Math.sin(Math.PI * 5 / 6), 10, (revolver[5] ? Color.BLUEVIOLET : Color.RED));
+        Circle circle1 = new Circle(0, 0, 12, (revolver[0] ? Color.BLUEVIOLET : Color.RED));
+        Circle circle2 = new Circle(0, 0, 12, (revolver[1] ? Color.BLUEVIOLET : Color.RED));
+        Circle circle3 = new Circle(0, 0, 12, (revolver[2] ? Color.BLUEVIOLET : Color.RED));
+        Circle circle4 = new Circle(0, 0, 12, (revolver[3] ? Color.BLUEVIOLET : Color.RED));
+        Circle circle5 = new Circle(0, 0, 12, (revolver[4] ? Color.BLUEVIOLET : Color.RED));
+        Circle circle6 = new Circle(0, 0, 12, (revolver[5] ? Color.BLUEVIOLET : Color.RED));
         Text loHizo = new Text((revolver[disparos]) ? "Le dio" : "Zafó");
         // Add the circles to the StackPane
+
         stackPane.getChildren().addAll(ellipse, circle1, circle2, circle3, circle4, circle5, circle6);
+
+        circle1.setTranslateX(142 * Math.cos(2 * Math.PI * 0 / 6));
+        circle1.setTranslateY(142 * Math.sin(2 * Math.PI * 0 / 6));
+        circle2.setTranslateX(142 * Math.cos(2 * Math.PI * 1 / 6));
+        circle2.setTranslateY(142 * Math.sin(2 * Math.PI * 1 / 6));
+        circle3.setTranslateX(142 * Math.cos(2 * Math.PI * 2 / 6));
+        circle3.setTranslateY(142 * Math.sin(2 * Math.PI * 2 / 6));
+        circle4.setTranslateX(142 * Math.cos(2 * Math.PI * 3 / 6));
+        circle4.setTranslateY(142 * Math.sin(2 * Math.PI * 3 / 6));
+        circle5.setTranslateX(142 * Math.cos(2 * Math.PI * 4 / 6));
+        circle5.setTranslateY(142 * Math.sin(2 * Math.PI * 4 / 6));
+        circle6.setTranslateX(142 * Math.cos(2 * Math.PI * 5 / 6));
+        circle6.setTranslateY(142 * Math.sin(2 * Math.PI * 5 / 6));
 
         Button button = new Button("Corchazo");
         button.setOnAction((ActionEvent e) -> {
