@@ -4,15 +4,21 @@ package clase11;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMain.java to edit this template
  */
+import com.sun.javafx.geom.BaseBounds;
+import com.sun.javafx.geom.transform.BaseTransform;
+import com.sun.javafx.scene.BoundsAccessor;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.effect.Effect;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.HBox;
@@ -128,11 +134,16 @@ public class CineJFX extends Application {
 
             }
         });
+        addSpectatorButton.setTooltip(new Tooltip("Agregue un nuevo espectador con los datos en los campos"));
 
         namePane.getChildren().addAll(nameLabel, nameTextField);
         agePane.getChildren().addAll(ageLabel, ageTextField);
         moneyPane.getChildren().addAll(moneyLabel, moneyTextField);
         GridPane gridPane = new GridPane();
+        
+        nameTextField.setTooltip(new Tooltip("Ingrese un nombre del Espectador"));
+        ageTextField.setTooltip(new Tooltip("Ingrese la edad del Espectador"));
+        moneyTextField.setTooltip(new Tooltip("Ingrese la cantidad de dinero disponible"));
 
         minimumAgeLabel.setAlignment(Pos.TOP_CENTER);
         nameLabel.setAlignment(Pos.TOP_RIGHT);
@@ -164,7 +175,7 @@ public class CineJFX extends Application {
 
         primaryPane.getChildren().addAll(secondaryPane, fieldsPane);
 
-        Scene scene = new Scene(primaryPane, 640, 512);
+        Scene scene = new Scene(primaryPane, 480, 400);
         primaryStage.setTitle("CineJFX");
         primaryStage.setScene(scene);
         primaryStage.show();
