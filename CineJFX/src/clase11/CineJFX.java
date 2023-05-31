@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
@@ -178,25 +179,28 @@ public class CineJFX extends Application {
         dropShadow.setBlurType(BlurType.GAUSSIAN);
 
         //Setting color for the shadow 
-        dropShadow.setColor(Color.STEELBLUE);
+        dropShadow.setColor(Color.WHITESMOKE);
 
         //Setting the height of the shadow
-        dropShadow.setHeight(2);
+        dropShadow.setHeight(1);
 
         //Setting the width of the shadow 
-        dropShadow.setWidth(3);
+        dropShadow.setWidth(1);
 
         //Setting the radius of the shadow 
-        dropShadow.setRadius(3);
+        dropShadow.setRadius(2);
 
         //setting the offset of the shadow 
         dropShadow.setOffsetX(1);
         dropShadow.setOffsetY(2);
 
         //Setting the spread of the shadow 
-        dropShadow.setSpread(5);
+        dropShadow.setSpread(2);
         // Applying to grid
+        
+        addSpectatorButton.setBlendMode(BlendMode.MULTIPLY);
         addSpectatorButton.setEffect(dropShadow);
+        
         addSpectatorButton.setPadding(new Insets(8));
         addSpectatorButton.setAlignment(Pos.BOTTOM_RIGHT);
         
