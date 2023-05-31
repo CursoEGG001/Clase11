@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
@@ -140,7 +142,7 @@ public class CineJFX extends Application {
         agePane.getChildren().addAll(ageLabel, ageTextField);
         moneyPane.getChildren().addAll(moneyLabel, moneyTextField);
         GridPane gridPane = new GridPane();
-        
+
         nameTextField.setTooltip(new Tooltip("Ingrese un nombre del Espectador"));
         ageTextField.setTooltip(new Tooltip("Ingrese la edad del Espectador"));
         moneyTextField.setTooltip(new Tooltip("Ingrese la cantidad de dinero disponible"));
@@ -149,7 +151,6 @@ public class CineJFX extends Application {
         nameLabel.setAlignment(Pos.TOP_RIGHT);
         ageLabel.setAlignment(Pos.CENTER_RIGHT);
         moneyLabel.setAlignment(Pos.BASELINE_RIGHT);
-        addSpectatorButton.setAlignment(Pos.BOTTOM_RIGHT);
 
         movieTitleLabel.setStyle("{-fx-font: Serif ; -fx-font-size: 16px; -fx-text-fill: BLUEVIOLET }");
         minimumAgeLabel.setStyle("{ -fx-font: monospace ;-fx-font-style: italic ; -fx-font-weight: bold}");
@@ -170,6 +171,35 @@ public class CineJFX extends Application {
         gridPane.add(seatPane, 0, 2, 6, 8);
 //        gridPane.add(statusLabel, 0, 15, 6, 1);
 
+        //Instantiating the Shadow class 
+        DropShadow dropShadow = new DropShadow();
+
+        //setting the type of blur for the shadow 
+        dropShadow.setBlurType(BlurType.GAUSSIAN);
+
+        //Setting color for the shadow 
+        dropShadow.setColor(Color.STEELBLUE);
+
+        //Setting the height of the shadow
+        dropShadow.setHeight(2);
+
+        //Setting the width of the shadow 
+        dropShadow.setWidth(3);
+
+        //Setting the radius of the shadow 
+        dropShadow.setRadius(3);
+
+        //setting the offset of the shadow 
+        dropShadow.setOffsetX(1);
+        dropShadow.setOffsetY(2);
+
+        //Setting the spread of the shadow 
+        dropShadow.setSpread(5);
+        // Applying to grid
+        addSpectatorButton.setEffect(dropShadow);
+        addSpectatorButton.setPadding(new Insets(8));
+        addSpectatorButton.setAlignment(Pos.BOTTOM_RIGHT);
+        
         secondaryPane.setAlignment(Pos.TOP_CENTER);
         statusLabel.setAlignment(Pos.BASELINE_LEFT);
 
