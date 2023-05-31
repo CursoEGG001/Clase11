@@ -32,7 +32,7 @@ public class RuletaRusaDeAgua extends Application {
         // Create a StackPane
         StackPane stackPane = new StackPane();
 
-        // 
+        // Create the containers for positioning
         VBox primaryPane = new VBox();
         HBox secondaryPane = new HBox();
         BorderPane stagePane = new BorderPane();
@@ -55,18 +55,18 @@ public class RuletaRusaDeAgua extends Application {
 
         stackPane.getChildren().addAll(ellipse, circle1, circle2, circle3, circle4, circle5, circle6);
 
-        circle1.setTranslateX(112 * Math.cos(2 * Math.PI * 0 / 6));
-        circle1.setTranslateY(112 * Math.sin(2 * Math.PI * 0 / 6));
-        circle2.setTranslateX(112 * Math.cos(2 * Math.PI * 1 / 6));
-        circle2.setTranslateY(112 * Math.sin(2 * Math.PI * 1 / 6));
-        circle3.setTranslateX(112 * Math.cos(2 * Math.PI * 2 / 6));
-        circle3.setTranslateY(112 * Math.sin(2 * Math.PI * 2 / 6));
-        circle4.setTranslateX(112 * Math.cos(2 * Math.PI * 3 / 6));
-        circle4.setTranslateY(112 * Math.sin(2 * Math.PI * 3 / 6));
-        circle5.setTranslateX(112 * Math.cos(2 * Math.PI * 4 / 6));
-        circle5.setTranslateY(112 * Math.sin(2 * Math.PI * 4 / 6));
-        circle6.setTranslateX(112 * Math.cos(2 * Math.PI * 5 / 6));
-        circle6.setTranslateY(112 * Math.sin(2 * Math.PI * 5 / 6));
+        circle1.setTranslateX(122 * Math.cos(2 * Math.PI * 0 / 6));
+        circle1.setTranslateY(122 * Math.sin(2 * Math.PI * 0 / 6));
+        circle2.setTranslateX(122 * Math.cos(2 * Math.PI * 1 / 6));
+        circle2.setTranslateY(122 * Math.sin(2 * Math.PI * 1 / 6));
+        circle3.setTranslateX(122 * Math.cos(2 * Math.PI * 2 / 6));
+        circle3.setTranslateY(122 * Math.sin(2 * Math.PI * 2 / 6));
+        circle4.setTranslateX(122 * Math.cos(2 * Math.PI * 3 / 6));
+        circle4.setTranslateY(122 * Math.sin(2 * Math.PI * 3 / 6));
+        circle5.setTranslateX(122 * Math.cos(2 * Math.PI * 4 / 6));
+        circle5.setTranslateY(122 * Math.sin(2 * Math.PI * 4 / 6));
+        circle6.setTranslateX(122 * Math.cos(2 * Math.PI * 5 / 6));
+        circle6.setTranslateY(122 * Math.sin(2 * Math.PI * 5 / 6));
 
         Button button = new Button("Corchazo");
         button.setOnAction((ActionEvent e) -> {
